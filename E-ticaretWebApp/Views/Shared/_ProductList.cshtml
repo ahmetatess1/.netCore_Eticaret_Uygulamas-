@@ -1,0 +1,30 @@
+﻿@using E_ticaret.DataAccess;
+@model IEnumerable<Product>
+<div class="row">
+
+    @foreach (var urun in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="~/Upload/@urun.Image" class="card-img-top urun-image" alt="@urun.Name">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="/Home/Details/@urun.id">@urun.Name</a>
+                    </h5>
+                    <p class="card-text pt-2 description">@urun.Description</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted product-price">
+                        <i class="fa fa-try" aria-hidden="true"></i>
+                        @urun.Price
+                    </small>
+                    <a href="/Home/Details/@urun.id" class="btn btn-default btn-sm float-right">
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        Urun İncele
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

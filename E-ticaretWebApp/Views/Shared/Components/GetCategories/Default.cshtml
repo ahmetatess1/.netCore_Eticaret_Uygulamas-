@@ -1,0 +1,41 @@
+﻿@model IEnumerable<E_ticaret.DataAccess.Category>
+@{
+    var SelectedCategory = Url.ActionContext.RouteData.Values["Id"];
+}
+
+    <div class="list-group">
+        <a href="/Home/List" class="list-group-item list-group-item-action">
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            Tüm Kategoriler
+        </a>
+        @foreach (var item in Model)
+        {
+            if (SelectedCategory != null)
+            {
+                if (item.Id == int.Parse(SelectedCategory.ToString()))
+                {
+                    <a href="/Home/List/@item.Id" class="list-group-item list-group-item-action active">
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        @item.Name
+                    </a>
+                }
+                else
+                {
+                    <a href="/Home/List/@item.Id" class="list-group-item list-group-item-action">
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        @item.Name
+                    </a>
+                }
+            }
+            else
+            {
+                <a href="/Home/List/@item.Id" class="list-group-item list-group-item-action">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    @item.Name
+                </a>
+            }
+
+
+
+        }
+    </div>

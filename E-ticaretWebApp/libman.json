@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "popper.js@1.15.0",
+      "destination": "wwwroot/lib/popper.js/"
+    },
+    {
+      "library": "holder@2.9.6",
+      "destination": "wwwroot/lib/holder/"
+    },
+    {
+      "library": "font-awesome@5.9.0",
+      "destination": "wwwroot/css/font-awesome/"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+﻿@model IEnumerable<E_ticaret.DataAccess.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container pb-5">
+    <h1>Ürün Listesi</h1>
+
+    <p>
+        <a asp-action="Create">Yeni Ürün</a>
+    </p>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stock)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsHome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsApproved)
+                </th>
+
+                <th style="width:140px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    <img src="~/Upload/@item.Image" alt="@item.Name" width="90px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    @if (item.IsHome == true)
+                    {
+                        <label class="badge badge-primary">
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                            Evet
+                        </label>
+                    }
+                    else
+                    {
+                        <label class="badge badge-danger">
+                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                            Hayır
+                        </label>
+                    }
+                </td>
+                <td>
+                    @if (item.IsApproved == true)
+                    {
+                        <label class="badge badge-primary">
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                            Evet
+                        </label>
+                    }
+                    else
+                    {
+                        <label class="badge badge-danger">
+                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                            Hayır
+                        </label>
+                    }
+                </td>
+
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.id">Güncelle</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.id">Sil</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
